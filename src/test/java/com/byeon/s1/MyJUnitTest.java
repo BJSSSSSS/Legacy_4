@@ -2,7 +2,6 @@ package com.byeon.s1;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -11,9 +10,5 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations= {"file:src/main/webapp/WEB-INF/spring/**/*-context.xml"})
 public abstract class MyJUnitTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 
 }
