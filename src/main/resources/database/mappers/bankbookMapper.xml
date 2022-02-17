@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.byeon.s1.bankbook.BankBookDAO">
+		
+		<select id="detail" resultType="com.byeon.s1.bankbook.BankBookDTO" parameterType="java.lang.Long">
+			SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{num}
+		</select>
+		
+		<!-- <select id="detail" resultType="com.byeon.s1.bankbook.BankBookDTO" parameterType="com.byeon.s1.bankbook.BankBookDTO">
+			SELECT * FROM BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
+		</select> -->
+		
+									<!-- select의 결과물을 하나씩담는것이 resultType! -->
+		<select id="list" resultType="com.byeon.s1.bankbook.BankBookDTO">	
+			SELECT * FROM BANKBOOK
+		</select>
+		
+		<insert id="add" parameterType="com.byeon.s1.bankbook.BankBookDTO"> <!-- 풀패키지명을 쓰는이유는 xml에 import가 없기 때문입니다! -->
+			INSERT INTO BANKBOOK(booknumber, bookname, bookcontents, bookrate, booksale) VALUES(BANKBOOK_SEQ.NEXTVAL, #{bookName}, #{bookContents}, #{bookRate}, #{bookSale})
+		</insert>
+		
+		<delete id="delete" parameterType="com.byeon.s1.bankbook.BankBookDTO">
+			DELETE BANKBOOK WHERE BOOKNUMBER = #{bookNumber}
+		</delete>
+		
+		
+	</mapper>
