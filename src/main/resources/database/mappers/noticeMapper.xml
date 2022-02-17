@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+	<mapper namespace="com.byeon.s1.notice.NoticeDAO">
+		<select id="list" resultType="com.byeon.s1.notice.NoticeDTO">
+			SELECT * FROM NOTICE
+		</select>
+		
+		<select id="detail" resultType="com.byeon.s1.notice.NoticeDTO" parameterType="com.byeon.s1.notice.NoticeDTO">
+			SELECT * FROM NOTICE WHERE NUM = #{num}
+		</select>
+		
+		<insert id="add" parameterType="com.byeon.s1.notice.NoticeDTO">
+			INSERT INTO NOTICE(NUM, TITLE, CONTENTS, WRITER, REGDATE) 
+			VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE)
+		</insert>
+		
+		<delete id="delete" parameterType="com.byeon.s1.notice.NoticeDTO">
+			DELETE NOTICE WHERE NUM = #{num}
+		</delete>
+		
+		<update id="update" parameterType="com.byeon.s1.notice.NoticeDTO">
+			UPDATE NOTICE SET HIT = HIT+1 WHERE NUM = #{num}
+		</update>
+		
+	</mapper>
