@@ -36,12 +36,14 @@ public class NoticeDAOTest extends MyJUnitTest {
 	
 	//@Test
 	public void addTest() throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setTitle("t3");
-		noticeDTO.setContents("c3");
-		noticeDTO.setWriter("w3");
-		int result = noticeDAO.add(noticeDTO);
-		assertEquals(1, result);
+		for(int i=0; i<10; i++) {
+			NoticeDTO noticeDTO = new NoticeDTO();
+			noticeDTO.setTitle("t3");
+			noticeDTO.setContents("c3");
+			noticeDTO.setWriter("w3");
+			int result = noticeDAO.add(noticeDTO);
+		}
+//		assertEquals(1, result);
 	}
 	
 	//@Test
@@ -52,7 +54,7 @@ public class NoticeDAOTest extends MyJUnitTest {
 		assertEquals(1, result);
 	}
 	
-	@Test
+	//@Test
 	public void updateTest() throws Exception{
 		NoticeDTO noticeDTO = new NoticeDTO();
 		noticeDTO.setNum(4L);

@@ -5,24 +5,24 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 	<mapper namespace="com.byeon.s1.notice.NoticeDAO">
-		<select id="list" resultType="com.byeon.s1.notice.NoticeDTO">
+		<select id="list" resultType="NoticeDTO">
 			SELECT * FROM NOTICE
 		</select>
 		
-		<select id="detail" resultType="com.byeon.s1.notice.NoticeDTO" parameterType="com.byeon.s1.notice.NoticeDTO">
+		<select id="detail" resultType="NoticeDTO" parameterType="NoticeDTO">
 			SELECT * FROM NOTICE WHERE NUM = #{num}
 		</select>
 		
-		<insert id="add" parameterType="com.byeon.s1.notice.NoticeDTO">
+		<insert id="add" parameterType="NoticeDTO">
 			INSERT INTO NOTICE(NUM, TITLE, CONTENTS, WRITER, REGDATE) 
 			VALUES(NOTICE_SEQ.NEXTVAL, #{title}, #{contents}, #{writer}, SYSDATE)
 		</insert>
 		
-		<delete id="delete" parameterType="com.byeon.s1.notice.NoticeDTO">
+		<delete id="delete" parameterType="NoticeDTO">
 			DELETE NOTICE WHERE NUM = #{num}
 		</delete>
 		
-		<update id="update" parameterType="com.byeon.s1.notice.NoticeDTO">
+		<update id="update" parameterType="NoticeDTO">
 			UPDATE NOTICE SET HIT = HIT+1 WHERE NUM = #{num}
 		</update>
 		
