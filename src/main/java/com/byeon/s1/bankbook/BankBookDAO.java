@@ -25,8 +25,8 @@ public class BankBookDAO {
 	}
 	
 	//detail
-	public BankBookDTO detail(Long num) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"detail", num);
+	public BankBookDTO detail(BankBookDTO bankBookDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"detail", bankBookDTO);
 	}
 	
 	
@@ -36,3 +36,10 @@ public class BankBookDAO {
 	}
 	
 }
+
+
+
+
+
+
+
