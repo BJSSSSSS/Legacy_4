@@ -6,7 +6,7 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.byeon.s1.bankbook.BankBookDTO" alias="BankBookDTO"/>
-  		
+  		<typeAlias type="com.byeon.s1.notice.NoticeDTO" alias="NoticeDTO"/>  		
   		<typeAlias type="java.lang.Long" alias="Long"/>
   	</typeAliases>
   </configuration>
