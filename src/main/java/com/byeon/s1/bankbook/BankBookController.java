@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/bankbook/*")
+@RequestMapping(value = "/bankbook/**")
 public class BankBookController {
 
 	@Autowired
