@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "notice/**")
+@RequestMapping(value = "/notice/**")
 public class NoticeController {
 	
 	@Autowired
@@ -46,10 +46,19 @@ public class NoticeController {
 	
 	//add에서 insert
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(ModelAndView mv, NoticeDTO noticeDTO) throws Exception{
-		noticeService.add(noticeDTO);
+	public String add(NoticeDTO noticeDTO) throws Exception{
+		int result = noticeService.add(noticeDTO);
 		return "redirect:./list";
 	}
+	
+	
+	//delete
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(NoticeDTO noticeDTO) throws Exception{
+		int result = noticeService.delete(noticeDTO);
+		return "redirect:./list"; 
+	}
+	
 	
 
 }
