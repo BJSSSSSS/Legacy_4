@@ -13,13 +13,19 @@
 		<form class="" action="./login" method="POST">
 			<fieldset>
 				<legend>ID</legend>
-				<input type="text" name="id">
+				<input type="text" name="id" value="${cookie.remember.value}">
+				<!--<input type="text" name="id" value="${rememberId}"> -->
 			</fieldset>
 			
 			<fieldset>
 				<legend>PW</legend>
 				<input type="password" name="pw">
 			</fieldset>		
+			
+			<fieldset>
+				<legend>Remember Me</legend>
+				<input type="checkbox" name="remember" value="1">
+			</fieldset>
 			
 			<fieldset>
 				<button type="submit">Login</button>

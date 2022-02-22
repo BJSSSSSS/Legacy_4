@@ -9,6 +9,12 @@ public class MemberService {
 	@Autowired
 	private MemberDAO memberDAO;
 	
+	//mypage(selectOne)
+	public MemberDTO mypage(MemberDTO memberDTO) throws Exception{
+		return memberDAO.mypage(memberDTO);
+	}
+	
+	
 	//login(selectOne)
 	public MemberDTO login(MemberDTO memberDTO) throws Exception{
 		return memberDAO.login(memberDTO);
