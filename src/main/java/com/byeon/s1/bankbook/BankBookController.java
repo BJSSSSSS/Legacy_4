@@ -58,6 +58,28 @@ public class BankBookController {
 		int result = bankBookService.delete(bankBookDTO);
 		return "redirect:./list";
 	}
+
+	
+	//update form
+	@RequestMapping(value="update", method = RequestMethod.GET)
+	public void update(BankBookDTO bankBookDTO, Model model) throws Exception {
+		//System.out.println(bankBookDTO.getBookName());
+		bankBookDTO = bankBookService.detail(bankBookDTO);
+		model.addAttribute("dto", bankBookDTO);
+	}
+	
+	//DB에 update
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(BankBookDTO bankBookDTO)throws Exception{
+//		System.out.println(bankBookDTO.getBookNumber());
+//		System.out.println(bankBookDTO.getBookName());
+//		System.out.println(bankBookDTO.getBookContents());
+//		System.out.println(bankBookDTO.getBookRate());
+//		System.out.println(bankBookDTO.getBookSale());
+		int result = bankBookService.update(bankBookDTO);
+		return "redirect:./list";
+	}
+	
 	
 }
 

@@ -13,6 +13,10 @@ public class BankBookDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE = "com.byeon.s1.bankbook.BankBookDAO.";//final 넣는이유는 변경금지!
 	
+	//update
+	public int update(BankBookDTO bankBookDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"update", bankBookDTO);
+	}
 	
 	//insert
 	public int add(BankBookDTO bankBookDTO) throws Exception{//누군가는 보내줘야함
