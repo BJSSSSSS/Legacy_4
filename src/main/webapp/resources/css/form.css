@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.frm fieldset{
+	width:200px;
+	border: 0px;
+}
+
+.frm{
+	width: 500px;
+	height: 300px;
+}

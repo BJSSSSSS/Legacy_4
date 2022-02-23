@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/bankbook/*")
+@RequestMapping(value = "/bankbook/**")
 public class BankBookController {
 
 	@Autowired
@@ -58,9 +58,6 @@ public class BankBookController {
 		int result = bankBookService.delete(bankBookDTO);
 		return "redirect:./list";
 	}
-	
-	
-	
 	
 }
 
