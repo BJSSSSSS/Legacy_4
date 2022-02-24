@@ -15,9 +15,17 @@
 		</select> -->
 		
 									<!-- select의 결과물을 하나씩담는것이 resultType! -->
-		<select id="list" resultType="BankBookDTO">	
-			SELECT * FROM BANKBOOK
+		<select id="list" resultType="BankBookDTO" parameterType="Pager">	
+			SELECT * FROM
+			(SELECT ROWNUM R, B.* FROM
+			(SELECT * FROM BANKBOOK WHERE BOOKNUMBER>0 ORDER BY BOOKNUMBER DESC) B)
+			WHERE R BETWEEN #{startRow} AND #{lastRow}
 		</select>
+		
+		<select id="total" resultType="Long">
+			SELECT COUNT(BOOKNUMBER) FROM BANKBOOK
+		</select>
+		
 		
 		<insert id="add" parameterType="BankBookDTO"> <!-- 풀패키지명을 쓰는이유는 xml에 import가 없기 때문입니다! -->
 			INSERT INTO BANKBOOK(booknumber, bookname, bookcontents, bookrate, booksale) 

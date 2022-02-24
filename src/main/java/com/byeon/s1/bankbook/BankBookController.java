@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.byeon.s1.util.Pager;
+
 @Controller
 @RequestMapping(value = "/bankbook/**")
 public class BankBookController {
@@ -18,13 +20,14 @@ public class BankBookController {
 	
 	//list
 	@RequestMapping(value="list", method = RequestMethod.GET)
-	public ModelAndView list(ModelAndView mv) throws Exception{
+	public ModelAndView list(ModelAndView mv, Pager pager) throws Exception{
 		//ModelAndView
 		//매개변수로 선언
 		//메서드내에서 객체 생성
 		//ModelAndView modelAndView = new ModelAndView();
-		List<BankBookDTO> ar = bankBookService.list();
+		List<BankBookDTO> ar = bankBookService.list(pager);
 		mv.addObject("list", ar);
+		mv.addObject("pager", pager);
 		mv.setViewName("bankbook/list");
 		
 		return mv;

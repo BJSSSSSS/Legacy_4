@@ -13,7 +13,7 @@
 	<h3>Name : ${dto.bookName}</h3>
 	<h3>Contents :${dto.bookContents}</h3>
 	
-	<a href="./list">List</a>
+	<a href="./list">List</a> <!-- 이 부분 현재 보고있는 부분으로 가는거 해볼것 -->
 	<a href="./update?bookNumber=${dto.bookNumber}">Update</a>
 	<a href="./delete?bookNumber=${dto.bookNumber}">Delete</a>
 

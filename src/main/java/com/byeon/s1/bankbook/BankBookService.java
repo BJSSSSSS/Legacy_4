@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.byeon.s1.util.Pager;
+
 
 @Service
 public class BankBookService {
@@ -18,10 +20,13 @@ public class BankBookService {
 	//메서드는 DAO의 메서드와 거의 동일
 	
 	//list
-	public List<BankBookDTO> list() throws Exception{
+	public List<BankBookDTO> list(Pager pager) throws Exception{
 		//DAO 메서드 호출 전 전처리 작업
+		pager.makeRow();
+		Long total = bankBookDAO.total();
+		pager.makeNum(total);
 		//호출 후 후처리 작업
-		List<BankBookDTO> ar = bankBookDAO.list();
+		List<BankBookDTO> ar = bankBookDAO.list(pager);
 		return ar;
 	}
 	

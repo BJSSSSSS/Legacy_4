@@ -17,13 +17,14 @@
 	
 		<thead>
 			<tr>
-				<th>상품명</th><th>이자율</th><th>판매여부</th>
+				<th>상품번호</th><th>상품명</th><th>이자율</th><th>판매여부</th>
 			</tr>
 		</thead>
 		
 		<tbody>
 			<c:forEach items="${list}" var="bankbook">
 				<tr>
+					<td>${bankbook.bookNumber}</td>
 					<td><a href="./detail?bookNumber=${bankbook.bookNumber}">${bankbook.bookName}</a></td>
 					<td>${bankbook.bookRate}</td>
 					<td>${bankbook.bookSale}</td>
@@ -32,6 +33,20 @@
 		</tbody>
 		
 	</table>
+	
+	<div>
+		<c:if test="${pager.pre}">
+			<a href="./list?page=${pager.startNum-1}">PREVIEW</a>
+		</c:if>
+	
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i"><!-- step은 기본값이 1 -->
+			<a href="./list?page=${i}">${i}</a>
+		</c:forEach>
+		
+		<c:if test="${pager.next}">
+			<a href="./list?page=${pager.lastNum+1}">NEXT</a>
+		</c:if>
+	</div>
 	
 	<a href="./add">ADD</a>
 	
