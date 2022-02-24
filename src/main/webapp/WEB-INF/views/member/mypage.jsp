@@ -15,6 +15,7 @@
 	<h3>email : ${dto.email}</h3>
 
 	<a href="../">HOME</a>
+	<a href="./update?id=${dto.id}">UPDATE</a>
 
 </body>
 </html>

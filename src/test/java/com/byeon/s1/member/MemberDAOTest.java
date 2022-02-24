@@ -44,4 +44,16 @@ public class MemberDAOTest extends MyJUnitTest {
 		assertNotNull(memberDTO);		
 	}
 	
+	//update
+	//@Test
+	public void updateTest() throws Exception{
+		MemberDTO memberDTO = new MemberDTO();
+		memberDTO.setId("T2");
+		memberDTO.setName("UPDATE1");
+		memberDTO.setPhone("010-5555-UUUU");
+		memberDTO.setEmail("UPDATE@NAVER.COM");
+		int result = memberDAO.update(memberDTO);
+		assertEquals(1, result);
+	}
+	
 }

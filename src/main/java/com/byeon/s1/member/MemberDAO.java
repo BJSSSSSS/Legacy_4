@@ -11,6 +11,11 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE="com.byeon.s1.member.MemberDAO.";
 	
+	//update
+	public int update(MemberDTO memberDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"update", memberDTO);
+	}
+	
 	//mypage
 	public MemberDTO mypage(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"mypage", memberDTO);

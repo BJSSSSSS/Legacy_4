@@ -45,7 +45,7 @@ public class MemberController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public String login(HttpSession session, MemberDTO memberDTO, String remember, ModelAndView mv, HttpServletResponse response) throws Exception{
 		
-		System.out.println("Remember : " + remember);
+		//System.out.println("Remember : " + remember);
 
 		if(remember != null && remember.equals("1")) {
 			//cookie 생성
@@ -90,6 +90,21 @@ public class MemberController {
 		mv.addObject("dto", memberDTO);
 		mv.setViewName("member/mypage");
 		return mv;
+	}
+	
+	//update form 이동
+	@RequestMapping(value = "update", method = RequestMethod.GET)
+	public void update(MemberDTO memberDTO, Model model) throws Exception{
+		memberDTO = memberService.mypage(memberDTO);
+		model.addAttribute("dto", memberDTO);
+	}
+	
+	//DB update 진행
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(MemberDTO memberDTO, HttpSession session) throws Exception{
+		int result = memberService.update(memberDTO);
+		session.setAttribute("member", memberDTO);
+		return "redirect:./mypage";
 	}
 	
 }

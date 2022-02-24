@@ -30,6 +30,7 @@
 	</table>
 	
 	<a href="./add">ADD</a>
+	<a href="../">HOME</a>
 
 </body>
 </html>
