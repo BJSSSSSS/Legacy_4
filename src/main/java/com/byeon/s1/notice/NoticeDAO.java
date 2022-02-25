@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.byeon.s1.util.Pager;
+
 @Repository
 public class NoticeDAO {
 
@@ -18,10 +20,16 @@ public class NoticeDAO {
 //	}
 	
 	//list(전체출력)
-	public List<NoticeDTO> list() throws Exception { // dao에서 안던졌는지 확인 test만 던졌는지
-		return sqlSession.selectList(NAMESPACE+"list");
+	public List<NoticeDTO> list(Pager pager) throws Exception { // dao에서 안던졌는지 확인 test만 던졌는지
+		return sqlSession.selectList(NAMESPACE+"list", pager);
 	}
 	
+	//total
+	public Long total() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"total");
+	}
+	
+
 	//detail(세부출력-한개)
 	public NoticeDTO detail(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"detail", noticeDTO);

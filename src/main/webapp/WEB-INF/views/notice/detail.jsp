@@ -22,7 +22,7 @@
 	 -->
 	
 	<a href="./list">List</a>
-	<a href="./delete">Delete</a>
+	<a href="./delete?num=${detail.num}">Delete</a>
 	
 </body>
 </html>

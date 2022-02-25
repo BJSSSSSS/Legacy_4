@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.byeon.s1.util.Pager;
+
 @Controller
 @RequestMapping(value = "/notice/**")
 public class NoticeController {
@@ -18,15 +20,16 @@ public class NoticeController {
 	
 	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public ModelAndView list(ModelAndView mv) throws Exception{
+	public ModelAndView list(ModelAndView mv, Pager pager) throws Exception{
 		
-		List<NoticeDTO> ar = noticeService.list();
+		List<NoticeDTO> ar = noticeService.list(pager);
 		mv.addObject("list", ar);
 		mv.setViewName("notice/list");
-		return mv;
+		return mv;	
 		
 	}
 	
+
 	//detail
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
 	public ModelAndView detail(ModelAndView mv, NoticeDTO noticeDTO) throws Exception{

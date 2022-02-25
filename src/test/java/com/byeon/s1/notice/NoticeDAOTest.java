@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import com.byeon.s1.MyJUnitTest;
+import com.byeon.s1.util.Pager;
 
 public class NoticeDAOTest extends MyJUnitTest {
 
@@ -21,8 +22,8 @@ public class NoticeDAOTest extends MyJUnitTest {
 //	}
 	
 	//@Test
-	public void listTest() throws Exception{
-		List<NoticeDTO> ar = noticeDAO.list();
+	public void listTest(Pager pager) throws Exception{
+		List<NoticeDTO> ar = noticeDAO.list(pager);
 		assertNotEquals(0, ar.size());
 	}
 	
@@ -33,14 +34,15 @@ public class NoticeDAOTest extends MyJUnitTest {
 		noticeDTO = noticeDAO.detail(noticeDTO);
 		assertNotNull(noticeDTO);
 	}
-	
+
+	//lnsert
 	//@Test
 	public void addTest() throws Exception{
-		for(int i=0; i<10; i++) {
+		for(int i=0; i<200; i++) {
 			NoticeDTO noticeDTO = new NoticeDTO();
-			noticeDTO.setTitle("t3");
-			noticeDTO.setContents("c3");
-			noticeDTO.setWriter("w3");
+			noticeDTO.setTitle("t"+i);
+			noticeDTO.setContents("c"+i);
+			noticeDTO.setWriter("w"+i);
 			int result = noticeDAO.add(noticeDTO);
 		}
 //		assertEquals(1, result);

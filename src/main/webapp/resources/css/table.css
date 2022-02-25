@@ -1,0 +1,25 @@
+
+
+.table-total{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+
+.table-total td, .table-total th{
+    border: 1px solid #3c0067;
+    border-spacing: 0px;
+    height: 40px;
+}
+
+.table-total thead tr{
+    background-color: #6d1496;
+    height: 5px;
+    color: #ffffff;
+}
+
+/* .table-total tr:first-child{
+    background-color: #6d1496;
+} */
+
