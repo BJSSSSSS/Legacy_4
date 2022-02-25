@@ -8,6 +8,7 @@
   		<typeAlias type="com.byeon.s1.bankbook.BankBookDTO" alias="BankBookDTO"/>
   		<typeAlias type="com.byeon.s1.notice.NoticeDTO" alias="NoticeDTO"/>  
   		<typeAlias type="com.byeon.s1.member.MemberDTO" alias="MemberDTO"/>
+  		<typeAlias type="com.byeon.s1.util.Pager" alias="Pager"/>
   		<typeAlias type="java.lang.Long" alias="Long"/>
   	</typeAliases>
   </configuration>

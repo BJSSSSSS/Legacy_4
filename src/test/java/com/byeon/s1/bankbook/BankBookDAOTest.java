@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.byeon.s1.MyJUnitTest;
+import com.byeon.s1.util.Pager;
 
 public class BankBookDAOTest extends MyJUnitTest{
 
@@ -33,11 +34,12 @@ public class BankBookDAOTest extends MyJUnitTest{
 	
 	
 	//List
-	//@Test
+	@Test
 	public void listTest() throws Exception{
-		List<BankBookDTO> ar = bankBookDAO.list();
-		
-		assertNotEquals(0, ar.size());
+		Pager pager = new Pager();
+		pager.rowMake();
+		List<BankBookDTO> ar = bankBookDAO.list(pager);
+		assertEquals(10, ar.size());
 //		for(int i=0; i<ar.size(); i++){
 //			System.out.println(ar.get(i).getBookName());
 //		}
@@ -51,9 +53,19 @@ public class BankBookDAOTest extends MyJUnitTest{
 			BankBookDTO bankBookDTO = new BankBookDTO();
 			bankBookDTO.setBookName("bookName" + i);
 			bankBookDTO.setBookContents("Contents" + i);
-			bankBookDTO.setBookRate(1.12+i);
+			
+			double rate = Math.random();
+			rate = rate*1000;
+			int r = (int)rate;
+			rate = r/100.0;
+			
+			bankBookDTO.setBookRate(rate);
 			bankBookDTO.setBookSale(1);
 			int result = bankBookDAO.add(bankBookDTO);
+			
+			if(i%10==0) {
+				Thread.sleep(1000);
+			}
 		}
 		System.out.println("Insert Finish");
 		//assertEquals(1, result);
