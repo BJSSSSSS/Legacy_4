@@ -17,15 +17,12 @@ public class NoticeService {
 	public List<NoticeDTO> list(Pager pager) throws Exception{
 		//DAO 선처리
 		pager.makeRow();
-		Long total = noticeDAO.total();
+		Long total = noticeDAO.total(pager);
 		pager.makeNum(total);
 		return noticeDAO.list(pager);
 	}
 	
-	
-	
-	
-	
+
 	//detail
 	public NoticeDTO detail(NoticeDTO noticeDTO) throws Exception{
 		return noticeDAO.detail(noticeDTO);

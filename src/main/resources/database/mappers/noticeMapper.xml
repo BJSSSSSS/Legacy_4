@@ -10,19 +10,35 @@
 			    (SELECT ROWNUM R, N.* FROM
 			    (SELECT * FROM NOTICE WHERE 
 			    NUM>0 
-			    AND 
-			    TITLE LIKE '%3%' 
-			    ORDER BY NUM DESC) N)
+			    AND
+			    <choose>
+			    	<when test="kind=='col1'">TITLE</when>
+			    	<when test="kind=='col2'">CONTENTS</when>
+			    	<otherwise>WRITER</otherwise>
+			    </choose> 			    
+			   LIKE '%'||#{search}||'%'
+			   ORDER BY NUM DESC) N)
 			WHERE R BETWEEN #{startRow} AND #{lastRow}
 		</select>
 		
-		<select id="total" resultType="Long">
-			SELECT COUNT(NUM) FROM NOTICE
+		<select id="total" resultType="Long" parameterType="Pager">
+			SELECT COUNT(NUM) FROM
+			 (SELECT * FROM NOTICE WHERE
+			 NUM>0
+			 AND 
+			 <choose>
+			 	<when test="kind=='col1'">TITLE</when>
+		    	<when test="kind=='col2'">CONTENTS</when>
+		    	<otherwise>WRITER</otherwise>
+			 </choose> 
+			 LIKE '%'||#{search}||'%')
 		</select>
 		
 
-		
-		
+
+
+
+
 		<select id="detail" resultType="NoticeDTO" parameterType="NoticeDTO">
 			SELECT * FROM NOTICE WHERE NUM = #{num}
 		</select>

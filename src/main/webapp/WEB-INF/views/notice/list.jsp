@@ -24,8 +24,25 @@
 					<option value="col1">제목</option>
 					<option value="col2">내용</option>
 					<option value="col3">작성자</option>
+					
+<%-- 					<c:if test="${pager.kind}==col1">
+						<option value="col1" selected>제목</option>
+						<option value="col2">내용</option>
+						<option value="col3">작성자</option>
+					</c:if>
+					<c:if test="${pager.kind}==col2">
+						<option value="col1">제목</option>
+						<option value="col2" selected>내용</option>
+						<option value="col3">작성자</option>
+					</c:if>
+					<c:if test="${pager.kind}==col3">
+						<option value="col1">제목</option>
+						<option value="col2">내용</option>
+						<option value="col3" selected>작성자</option>
+					</c:if>
+					 --%>
 				</select>
-				<input type="text" name="search">
+				<input type="text" name="search" value="${pager.search}">
 				<button type="submit">검색</button>
 			</fieldset>
 		</form>
@@ -55,7 +72,7 @@
 				<a href="./list?page=${pager.startNum-1}">PREVIEW</a>
 			</c:if>
 			<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-				<a href="./list?page=${i}">${i}</a>
+				<a href="./list?page=${i}&kind=${pager.kind} &search=${pager.search}">${i}</a>
 			</c:forEach>
 			<c:if test="${pager.next}">
 				<a href="./list?page=${pager.lastNum+1}">NEXT</a>

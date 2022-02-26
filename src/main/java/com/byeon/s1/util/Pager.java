@@ -36,6 +36,12 @@ public class Pager {
 	private boolean next;
 	
 
+	//---------------- 검색 기능 --------------------
+	private String search;
+	
+	private String kind;
+	
+	
 	public void makeNum(Long totalCount) {
 		
 		//전체 갯수
@@ -102,8 +108,6 @@ public class Pager {
 		}
 		
 	}
-	
-	
 	
 
 	public Long getPage() {
@@ -175,7 +179,29 @@ public class Pager {
 	public void setNext(boolean next) {
 		this.next = next;
 	}
+
+
+	public String getSearch() {
+		if(this.search == null) {
+			this.search = "";
+		}
+		return search;
+	}
+
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+
+	public String getKind() {
+		return kind;
+	}
+
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
 	
 
-	
 }
