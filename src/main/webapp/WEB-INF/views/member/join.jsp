@@ -13,7 +13,7 @@
 	<div>
 		<form class="frm" action="./join" method="post">
 			<fieldset>
-				<legend>ID : </<legend>
+				<legend>ID : </legend>
 				<input type="text" name="id">
 			</fieldset>
 		
