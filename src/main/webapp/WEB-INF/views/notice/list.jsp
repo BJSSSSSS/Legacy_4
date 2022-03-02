@@ -13,7 +13,7 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 
-	<div class="table-cotainer">
+	<div class="table-container">
 
 		<h1 class="title">Notice List Page</h1>
 
