@@ -22,6 +22,14 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	//join check
+	@RequestMapping(value = "joinCheck", method = RequestMethod.GET)
+	public void joinCheck() throws Exception{
+		
+	}
+	
+	
+	
 	//join form
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public void join() throws Exception{
@@ -43,7 +51,7 @@ public class MemberController {
 	
 	//login selectOne
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String login(HttpSession session, MemberDTO memberDTO, String remember, ModelAndView mv, HttpServletResponse response) throws Exception{
+	public String login(HttpSession session, MemberDTO memberDTO, String remember, Model model, HttpServletResponse response) throws Exception{
 		
 		System.out.println("Remember : " + remember);
 
@@ -62,13 +70,23 @@ public class MemberController {
 		
 		memberDTO = memberService.login(memberDTO);
 	
-		String path = "redirect:./login";
+//		String path = "redirect:./login";
+//		
+//		if(memberDTO != null) {
+//			session.setAttribute("member", memberDTO);
+//			path = "redirect:../";
+//		}
+		String message="Login Fail";
+		String p="./login";
 		
 		if(memberDTO != null) {
 			session.setAttribute("member", memberDTO);
-			path = "redirect:../";
+			message="Login Success";
+			p = "../";
 		}
-
+		model.addAttribute("path", p);
+		model.addAttribute("message", message);
+		String path="common/result";
 		return path;
 	}
 	

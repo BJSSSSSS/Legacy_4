@@ -10,14 +10,15 @@
 <body>
 	<h1>Notice Add Page</h1>
 	
-	<form action="./add" method="POST">
-		TITLE :<input type="text" name="title">
+	<form action="./add" method="POST" id="frm">
+		TITLE :<input type="text" name="title" id="title">
 		CONTENTS : <textarea rows="" cols="" name="contents"></textarea>
-		WRITER :<input type="text" name="writer">
+		WRITER :<input type="text" name="writer" id="writer">
 	
-		<button type="submit">ADD</button>
+		<button type="button" id="btn">ADD</button>
 	</form>
 
 	<a href="./list">List</a>
+	<script src="../resources/js/noticeAdd.js"></script>
 </body>
 </html>
