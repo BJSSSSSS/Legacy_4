@@ -1,15 +1,15 @@
-package com.byeon.s1.notice;
+package com.byeon.s1.board;
 
 import java.sql.Date;
 
-public class NoticeDTO {
-
+public class BoardDTO {
+	
 	private Long num;
 	private String title;
 	private String contents;
 	private String writer;
 	private Date regDate;
-	private Integer hit;
+	private Long hit;
 	
 	public Long getNum() {
 		return num;
@@ -41,12 +41,11 @@ public class NoticeDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public Integer getHit() {
+	public Long getHit() {
 		return hit;
 	}
-	public void setHit(Integer hit) {
+	public void setHit(Long hit) {
 		this.hit = hit;
 	}
-	
 	
 }

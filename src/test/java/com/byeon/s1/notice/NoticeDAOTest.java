@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import com.byeon.s1.MyJUnitTest;
+import com.byeon.s1.board.notice.NoticeDAO;
+import com.byeon.s1.board.notice.NoticeDTO;
 
 public class NoticeDAOTest extends MyJUnitTest {
 
@@ -21,18 +23,18 @@ public class NoticeDAOTest extends MyJUnitTest {
 //	}
 	
 	//@Test
-	public void listTest() throws Exception{
-		List<NoticeDTO> ar = noticeDAO.list();
-		assertNotEquals(0, ar.size());
-	}
+//	public void listTest() throws Exception{
+//		List<NoticeDTO> ar = noticeDAO.list();
+//		assertNotEquals(0, ar.size());
+//	}
 	
 	//@Test
-	public void detailTest() throws Exception{
-		NoticeDTO noticeDTO = new NoticeDTO();
-		noticeDTO.setNum(1L);
-		noticeDTO = noticeDAO.detail(noticeDTO);
-		assertNotNull(noticeDTO);
-	}
+//	public void detailTest() throws Exception{
+//		NoticeDTO noticeDTO = new NoticeDTO();
+//		noticeDTO.setNum(1L);
+//		noticeDTO = noticeDAO.detail(noticeDTO);
+//		assertNotNull(noticeDTO);
+//	}
 	
 	//@Test
 	public void addTest() throws Exception{
