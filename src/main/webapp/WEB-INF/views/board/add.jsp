@@ -15,14 +15,17 @@
 
 	<h1>${board} Add Page</h1>
 	
-	<form action="./add" method="POST">
-		TITLE :<input type="text" name="title">
-		WRITER :<input type="text" name="writer">
+
+	<form action="./add" method="POST" id="frm">
+		TITLE :<input type="text" name="title" id="title">
 		CONTENTS : <textarea rows="" cols="" name="contents"></textarea>
-		
-		<button type="submit">ADD</button>
+		WRITER :<input type="text" name="writer" id="writer">
+	
+		<button type="button" id="btn">ADD</button>
+
 	</form>
 
 	<a href="./list">List</a>
+	<script src="../resources/js/noticeAdd.js"></script>
 </body>
 </html>
