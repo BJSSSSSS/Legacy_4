@@ -19,7 +19,7 @@
 	<form action="./add" method="POST" id="frm" enctype="multipart/form-data">
 		TITLE :<input type="text" name="title" id="title">
 		CONTENTS : <textarea rows="" cols="" name="contents"></textarea>
-		WRITER :<input type="text" name="writer" id="writer">
+		WRITER :<input type="text" name="writer" id="writer" value="${member.id}" readonly>
 	
 		<div>
 		<!-- controller에 넘길때 파라미터 이름과 동일하게 넘길것! -->
@@ -28,11 +28,12 @@
 			<input type="file" name="files">
 		</div>
 	
-		<button type="button" id="btn">ADD</button>
+		<button type="submit" id="btn">ADD</button>
 
 	</form>
 
 	<a href="./list">List</a>
-	<script src="../resources/js/noticeAdd.js"></script>
+	<!-- js 적용안함 이유는  writer 자동입력이라 // 조정해도 됨 -->
+	<!-- <script src="../resources/js/noticeAdd.js"></script> -->
 </body>
 </html>
