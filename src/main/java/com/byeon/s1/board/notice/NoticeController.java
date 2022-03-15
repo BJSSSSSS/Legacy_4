@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.byeon.s1.board.BoardDTO;
@@ -26,7 +27,17 @@ public class NoticeController {
 		return "notice";
 	}
 	
+	//fileDown
+	@RequestMapping(value="fileDown", method = RequestMethod.GET)
+	public ModelAndView fileDown(NoticeFileDTO noticeFileDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		noticeFileDTO = (NoticeFileDTO)noticeService.detailFile(noticeFileDTO);
+		mv.addObject("file", noticeFileDTO);
+		mv.setViewName("fileDown");
+		return mv;
+	}
 	
+
 	//list
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public ModelAndView list(ModelAndView mv, Pager pager) throws Exception{
@@ -58,8 +69,8 @@ public class NoticeController {
 	
 	//add에서 insert
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public String add(NoticeDTO noticeDTO) throws Exception{
-		int result = noticeService.add(noticeDTO);
+	public String add(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception{
+		int result = noticeService.add(noticeDTO, files);
 		return "redirect:./list";
 	}
 	

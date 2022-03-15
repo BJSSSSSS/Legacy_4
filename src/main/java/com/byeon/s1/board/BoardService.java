@@ -2,6 +2,8 @@ package com.byeon.s1.board;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.byeon.s1.util.Pager;
 
 public interface BoardService {
@@ -14,7 +16,7 @@ public interface BoardService {
 	public BoardDTO detail(BoardDTO boardDTO) throws Exception;
 	
 	//add
-	public int add(BoardDTO boardDTO) throws Exception;
+	public int add(BoardDTO boardDTO, MultipartFile [] files) throws Exception;
 	
 	//update
 	public int update(BoardDTO boardDTO) throws Exception;
@@ -22,5 +24,6 @@ public interface BoardService {
 	//delete
 	public int delete(BoardDTO boardDTO) throws Exception;
 	
-
+	//detailFile
+	public BoardFileDTO detailFile(BoardFileDTO boardFileDTO) throws Exception;
 }

@@ -6,9 +6,44 @@
 
 <mapper namespace="com.byeon.s1.member.MemberDAO">
 
-	<select id="mypage" resultType="MemberDTO" parameterType="MemberDTO">
-		SELECT ID, NAME, EMAIL, PHONE FROM MEMBER WHERE ID=#{id}
+	<select id="detailFile" parameterType="MemberFileDTO" resultType="MemberFileDTO">
+		SELECT * FROM MEMBERFILE
+		WHERE FILENUM=#{fileNum}
 	</select>
+
+	<insert id="addFile" parameterType="MemberFileDTO">
+		INSERT INTO MEMBERFILE(FILENUM, ID, FILENAME, ORINAME)
+		VALUES(file_seq.nextval, #{id}, #{fileName}, #{oriName})
+	</insert>
+
+	<select id="mypage" parameterType="MemberDTO" resultMap="mypageResult" >
+		<!-- join 활용해서 두개 테이블 다 가지고 오기 -->
+		SELECT ID, M.NAME, M.EMAIL, M.PHONE, MF.FILENUM, MF.FILENAME, MF.ORINAME
+		FROM 
+			member M
+    			LEFT JOIN
+    			<!-- 사진이 없는애들도 출력이 되어야 하기 때문에 INNER JOIN 말고 OUTER JOIN 사용 -->
+    		memberFile MF
+    		USING(ID)
+    	WHERE ID = #{id}
+    	
+	</select>
+	
+	<resultMap type="MemberDTO" id="mypageResult">
+		<!-- column은 위 select문에서 가져온것을 넣고, property는 DTO에 그 값을 넣는 변수명을 뜻함 -->
+		<id column="id" property="id"/> <!-- PK -->
+		<result column="name" property="name"/><!-- PK를 제외한 나머지 -->
+		<result column="email" property="email"/><!-- PK를 제외한 나머지 -->
+		<result column="phone" property="phone"/><!-- PK를 제외한 나머지 -->
+		<!-- <association property="memberFileDTO" javaType="com.byeon.s1.memeber.MemberFileDTO"> -->
+		<!-- 자동으로 new MemberFileDTO 해서 넣어줌 -->
+		<!-- 이전에 MemberDTO에 변수로 MemberFileDTO 선언해줄것! -->
+		<association property="memberFileDTO" javaType="MemberFileDTO"> <!-- 별칭 등록해서 별칭으로! -->
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</association>
+	</resultMap>
 	
 	<select id="login" resultType="MemberDTO" parameterType="MemberDTO">
 		SELECT ID, NAME FROM MEMBER WHERE ID=#{id} AND PW=#{pw}

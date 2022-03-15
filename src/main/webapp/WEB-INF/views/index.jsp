@@ -7,10 +7,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<c:import url="./template/header_css.jsp"></c:import>
-
+	<style type="text/css">
+		.hea{
+			width : 80%;
+			height: 200px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+	</style>
 </head>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
+	
+	<div>
+		<img alt="" src="./resources/images/baby.jpg" class="hea">
+	</div>
+	
+	
 	
 	<h1>Index Page</h1>
 	
@@ -32,6 +45,7 @@
 		</c:if>
 	</div> 
 	
+	<img alt="" src="./resources/upload/member/9353d992-83fd-4498-96c9-80276ea3aff1_톰캣 정리.png">
 	
 </body>
 </html>	
