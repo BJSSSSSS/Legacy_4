@@ -86,7 +86,7 @@
 				SELECT QNA_SEQ.NEXTVAL FROM DUAL
 			</selectKey>
 			INSERT INTO QNA(NUM, TITLE, CONTENTS, WRITER, REGDATE, HIT, REF, STEP, DEPTH) 
-			VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, QNA_SEQ.CURRVAL, 0, 0)
+			VALUES(#{num}, #{title}, #{contents}, #{writer}, SYSDATE, 0, #{num}, 0, 0)
 		</insert>
 		
 		<insert id="addFile" parameterType="BoardFileDTO">
@@ -99,7 +99,7 @@
 			WHERE FILENUM=#{fileNum}
 		</select>
 		
-		<select id="listFile" parameterType="BoardDTO" resultType="QnaFileDTO">
+		<select id="listFile" parameterType="BoardDTO" resultType="BoardFileDTO">
 			SELECT * FROM QNAFILE
 			WHERE NUM=#{num}
 		</select>
