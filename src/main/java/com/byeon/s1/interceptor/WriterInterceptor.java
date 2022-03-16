@@ -23,6 +23,8 @@ public class WriterInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
+		System.out.println("Writer Interceptor");
+		
 		boolean check = true;
 		
 		Long num = Long.parseLong(request.getParameter("num"));
