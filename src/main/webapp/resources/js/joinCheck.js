@@ -6,6 +6,7 @@
  
 const checkAll = document.getElementById('checkAll');
 const check = document.getElementsByClassName('check');
+const rules = document.getElementById('rules');
 
 //전체동의
 checkAll.addEventListener("click", function(){
@@ -24,19 +25,39 @@ checkAll.addEventListener("click", function(){
 
 
 // 모든것마다 체크이벤트?(동의 전부 누를때 전체동의 자동으로)
-for(ck of check){
-    ck.addEventListener("click", function(){
-        let final = true;
+// for(ck of check){
+//     ck.addEventListener("click", function(){
+//         let final = true;
 
-        for(c of check){
-            if(!c.checked){
-                final = false;
-            }
+//         for(c of check){
+//             if(!c.checked){
+//                 final = false;
+//             }
+//         }
+
+//         checkAll.checked = final;
+//     });
+// }
+
+// 위에꺼 다르게 해보는것
+rules.addEventListener("click", function(event){
+    let final = true;
+
+    for(c of check){
+        if(!c.checked){
+            final = false;
         }
+    }
+    checkAll.checked = final;
 
-        checkAll.checked = final;
-    });
-}
+});
+
+
+
+
+
+
+
 
 const btn = document.getElementById("btn");
 

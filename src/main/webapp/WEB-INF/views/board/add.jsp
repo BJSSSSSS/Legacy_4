@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="../template/header_css.jsp"></c:import>
+
 <link href="../resources/css/table.css" rel="styleSheet"/>
 <link href="../resources/css/list.css" rel="styleSheet"/>
 </head>
@@ -21,18 +22,32 @@
 		CONTENTS : <textarea rows="" cols="" name="contents"></textarea>
 		WRITER :<input type="text" name="writer" id="writer" value="${member.id}" readonly>
 	
-		<div>
+		<div id="fileResult">
 		<!-- controller에 넘길때 파라미터 이름과 동일하게 넘길것! -->
+			
+
+			<!-- 
+			<div>
+				<input type="file" name="files"><button type="button">DEL</button>
+			</div>
 			<input type="file" name="files">
-			<input type="file" name="files">
-			<input type="file" name="files">
+			<input type="file" name="files"> 
+			-->
+
 		</div>
-	
+
+		<div>
+			<button type="button" id="fileAdd">FileAdd</button>
+			<button type="button" class="del">Sample DEL</button>
+		</div>
+
+
 		<button type="submit" id="btn">ADD</button>
 
 	</form>
 
 	<a href="./list">List</a>
+	<script src="../resources/js/file.js"></script>
 	<!-- js 적용안함 이유는  writer 자동입력이라 // 조정해도 됨 -->
 	<!-- <script src="../resources/js/noticeAdd.js"></script> -->
 </body>
